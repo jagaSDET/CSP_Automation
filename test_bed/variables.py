@@ -1,0 +1,10 @@
+slider_url = "https://practice-automation.com/slider/"
+browser_type = "chrome"
+slider_text = 'Slider'
+slider_default_value = 25
+slider_end_value = 100
+slider_start_value = 0
+x_offset_positive_value = 700
+y_offset_positive_value = 0
+x_offset_negative_value = -700
+y_offset_negative_value = 0
