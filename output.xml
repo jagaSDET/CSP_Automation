@@ -1,213 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1 (Python 3.12.5 on win32)" generated="2024-09-26T17:35:39.670200" rpa="false" schemaversion="5">
+<robot generator="Robot 7.1 (Python 3.12.5 on win32)" generated="2024-09-28T12:36:21.023704" rpa="false" schemaversion="5">
 <suite id="s1" name="Csp Regression" source="C:\Users\Hp\OneDrive\Desktop\CSP_AUTOMATION\test_suite\csp_regression.robot">
-<kw name="Opening Browser" owner="csp_keywords" type="SETUP">
+<kw name="Suite Setup Section" owner="csp_keywords" type="SETUP">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:40.270458" level="INFO">Opening browser 'chrome' to base url 'https://practice-automation.com/slider/'.</msg>
+<msg time="2024-09-28T12:36:21.471758" level="INFO">Opening browser 'chrome' to base url 'https://practice-automation.com/slider/'.</msg>
 <arg>${slider_url}</arg>
 <arg>${browser_type}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-09-26T17:35:40.270458" elapsed="5.169626"/>
+<status status="PASS" start="2024-09-28T12:36:21.471758" elapsed="4.030453"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2024-09-26T17:35:45.441029" elapsed="0.046872"/>
+<status status="PASS" start="2024-09-28T12:36:25.503205" elapsed="0.076806"/>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2024-09-26T17:35:50.488926" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-09-26T17:35:45.487901" elapsed="5.001025"/>
+<doc>This keyword is executed before any test cases in the suite.
+It opens the browser to the specified url and maximizes the window.</doc>
+<status status="PASS" start="2024-09-28T12:36:21.470762" elapsed="4.112871"/>
 </kw>
-<status status="PASS" start="2024-09-26T17:35:40.269461" elapsed="10.220517"/>
-</kw>
-<test id="s1-t1" name="Validating Default Slider Value" line="10">
-<kw name="Default Slider Value" owner="csp_keywords">
-<kw name="Get WebElement" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:50.550103" level="INFO">${slider_value} = &lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.29")&gt;</msg>
-<var>${slider_value}</var>
-<arg>${slider_value_xpath}</arg>
-<doc>Returns the first WebElement matching the given ``locator``.</doc>
-<status status="PASS" start="2024-09-26T17:35:50.492965" elapsed="0.057138"/>
-</kw>
-<kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:50.553093" level="INFO">Verifying element '&lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.29")&gt;' contains exact text '25'.</msg>
-<arg>${slider_value}</arg>
-<arg>${slider_default_value}</arg>
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2024-09-26T17:35:50.551100" elapsed="0.053866"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2024-09-26T17:35:52.606233" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-09-26T17:35:50.604966" elapsed="2.001267"/>
-</kw>
-<status status="PASS" start="2024-09-26T17:35:50.491969" elapsed="2.114264"/>
-</kw>
-<status status="PASS" start="2024-09-26T17:35:50.489978" elapsed="2.117274"/>
-</test>
-<test id="s1-t2" name="Validating Slider Till End Value" line="13">
-<kw name="Move Slider Till End Validate Value" owner="csp_keywords">
-<kw name="Get WebElement" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:52.654120" level="INFO">${slider_xpath} = &lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.23")&gt;</msg>
-<var>${slider_xpath}</var>
-<arg>${slider_xpath}</arg>
-<doc>Returns the first WebElement matching the given ``locator``.</doc>
-<status status="PASS" start="2024-09-26T17:35:52.615262" elapsed="0.038858"/>
-</kw>
-<kw name="Drag And Drop By Offset" owner="SeleniumLibrary">
-<arg>${slider_xpath}</arg>
-<arg>${x_offset_positive_value}</arg>
-<arg>${y_offset_positive_value}</arg>
-<doc>Drags the element identified with ``locator`` by ``xoffset/yoffset``.</doc>
-<status status="PASS" start="2024-09-26T17:35:52.655117" elapsed="0.591586"/>
-</kw>
-<kw name="Get WebElement" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:53.273737" level="INFO">${slider_value_xpath} = &lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.29")&gt;</msg>
-<var>${slider_value_xpath}</var>
-<arg>${slider_value_xpath}</arg>
-<doc>Returns the first WebElement matching the given ``locator``.</doc>
-<status status="PASS" start="2024-09-26T17:35:53.247700" elapsed="0.026037"/>
-</kw>
-<kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:53.274629" level="INFO">Verifying element '&lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.29")&gt;' contains exact text '100'.</msg>
-<arg>${slider_value_xpath}</arg>
-<arg>${slider_end_value}</arg>
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2024-09-26T17:35:53.274629" elapsed="0.020048"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2024-09-26T17:35:55.296251" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-09-26T17:35:53.294677" elapsed="2.001574"/>
-</kw>
-<status status="PASS" start="2024-09-26T17:35:52.614266" elapsed="2.681985"/>
-</kw>
-<status status="PASS" start="2024-09-26T17:35:52.611229" elapsed="2.687069"/>
-</test>
-<test id="s1-t3" name="Validating Slider After Default Value" line="16">
+<test id="s1-t1" name="Validate Slider After Default Value" line="20">
 <kw name="After Slider Default Value" owner="csp_keywords">
 <kw name="Get WebElement" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:55.335199" level="INFO">${slider_xpath} = &lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.23")&gt;</msg>
+<msg time="2024-09-28T12:36:25.694690" level="INFO">${slider_xpath} = &lt;selenium.webdriver.remote.webelement.WebElement (session="6c726b3fd2ca7dc21eaa40c3869751e0", element="f.BBFC6FA0F0CE2490E8561A6D561C5FE6.d.A43769419CBDF63B46ADA152A98521F9.e.24")&gt;</msg>
 <var>${slider_xpath}</var>
 <arg>${slider_xpath}</arg>
 <doc>Returns the first WebElement matching the given ``locator``.</doc>
-<status status="PASS" start="2024-09-26T17:35:55.306276" elapsed="0.028923"/>
+<status status="PASS" start="2024-09-28T12:36:25.627950" elapsed="0.066740"/>
 </kw>
 <kw name="Drag And Drop By Offset" owner="SeleniumLibrary">
 <arg>${slider_xpath}</arg>
 <arg>-350</arg>
 <arg>0</arg>
 <doc>Drags the element identified with ``locator`` by ``xoffset/yoffset``.</doc>
-<status status="PASS" start="2024-09-26T17:35:55.335199" elapsed="0.568588"/>
+<status status="PASS" start="2024-09-28T12:36:25.694690" elapsed="0.710221"/>
 </kw>
 <kw name="Get WebElement" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:55.917751" level="INFO">${slider_value_xpath} = &lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.29")&gt;</msg>
+<msg time="2024-09-28T12:36:26.436825" level="INFO">${slider_value_xpath} = &lt;selenium.webdriver.remote.webelement.WebElement (session="6c726b3fd2ca7dc21eaa40c3869751e0", element="f.BBFC6FA0F0CE2490E8561A6D561C5FE6.d.A43769419CBDF63B46ADA152A98521F9.e.31")&gt;</msg>
 <var>${slider_value_xpath}</var>
 <arg>${slider_value_xpath}</arg>
 <doc>Returns the first WebElement matching the given ``locator``.</doc>
-<status status="PASS" start="2024-09-26T17:35:55.903787" elapsed="0.013964"/>
+<status status="PASS" start="2024-09-28T12:36:26.405908" elapsed="0.030917"/>
 </kw>
 <kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:55.918748" level="INFO">Verifying element '&lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.29")&gt;' contains exact text '25'.</msg>
+<msg time="2024-09-28T12:36:26.437823" level="INFO">Verifying element '&lt;selenium.webdriver.remote.webelement.WebElement (session="6c726b3fd2ca7dc21eaa40c3869751e0", element="f.BBFC6FA0F0CE2490E8561A6D561C5FE6.d.A43769419CBDF63B46ADA152A98521F9.e.31")&gt;' contains exact text '25'.</msg>
 <arg>${slider_value_xpath}</arg>
 <arg>${slider_default_value}</arg>
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2024-09-26T17:35:55.917751" elapsed="0.016954"/>
+<status status="PASS" start="2024-09-28T12:36:26.437823" elapsed="0.033475"/>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2024-09-26T17:35:57.936627" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-09-26T17:35:55.934705" elapsed="2.001922"/>
+<doc>After pefforming the slider action, validate the default value.</doc>
+<status status="PASS" start="2024-09-28T12:36:25.626872" elapsed="0.844426"/>
 </kw>
-<status status="PASS" start="2024-09-26T17:35:55.305279" elapsed="2.631348"/>
-</kw>
-<status status="PASS" start="2024-09-26T17:35:55.299296" elapsed="2.638447"/>
+<doc>Validating the slider after default value.</doc>
+<tag>Regression</tag>
+<status status="PASS" start="2024-09-28T12:36:25.584040" elapsed="0.888254"/>
 </test>
-<test id="s1-t4" name="Validating Slider Till Starting Point Value" line="19">
-<kw name="Move Slider Backward Validate Value" owner="csp_keywords">
-<kw name="Get WebElement" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:57.957571" level="INFO">${slider_xpath} = &lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.23")&gt;</msg>
-<var>${slider_xpath}</var>
-<arg>${slider_xpath}</arg>
-<doc>Returns the first WebElement matching the given ``locator``.</doc>
-<status status="PASS" start="2024-09-26T17:35:57.943608" elapsed="0.013963"/>
-</kw>
-<kw name="Drag And Drop By Offset" owner="SeleniumLibrary">
-<arg>${slider_xpath}</arg>
-<arg>${x_offset_negative_value}</arg>
-<arg>${y_offset_negative_value}</arg>
-<doc>Drags the element identified with ``locator`` by ``xoffset/yoffset``.</doc>
-<status status="PASS" start="2024-09-26T17:35:57.957571" elapsed="0.565153"/>
-</kw>
-<kw name="Get WebElement" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:58.537683" level="INFO">${slider_value_xpath} = &lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.29")&gt;</msg>
-<var>${slider_value_xpath}</var>
-<arg>${slider_value_xpath}</arg>
-<doc>Returns the first WebElement matching the given ``locator``.</doc>
-<status status="PASS" start="2024-09-26T17:35:58.522724" elapsed="0.014959"/>
-</kw>
-<kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:35:58.538682" level="INFO">Verifying element '&lt;selenium.webdriver.remote.webelement.WebElement (session="1e29b7f8c2288a2a05dfff2287e56792", element="f.F774401712219BC4620C2F007ACD2467.d.7DAAC6A69BC7E5C54D1568168751CB01.e.29")&gt;' contains exact text '0'.</msg>
-<arg>${slider_value_xpath}</arg>
-<arg>${slider_start_value}</arg>
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2024-09-26T17:35:58.537683" elapsed="0.016957"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2024-09-26T17:36:00.557419" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-09-26T17:35:58.554640" elapsed="2.002779"/>
-</kw>
-<status status="PASS" start="2024-09-26T17:35:57.942611" elapsed="2.615814"/>
-</kw>
-<status status="PASS" start="2024-09-26T17:35:57.940977" elapsed="2.619443"/>
-</test>
-<test id="s1-t5" name="Validate The Slider Text" line="22">
-<kw name="Validate The Text" owner="csp_keywords">
-<kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2024-09-26T17:36:00.570394" level="INFO">Verifying element 'xpath=//*[@id="top-wrap"]/section/div/h1' contains exact text 'Slider'.</msg>
-<arg>${slider_text_xpath}</arg>
-<arg>${slider_text}</arg>
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2024-09-26T17:36:00.568649" elapsed="0.066604"/>
-</kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>${slider_text}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2024-09-26T17:36:00.635253" elapsed="0.000000"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2024-09-26T17:36:02.636566" level="INFO">Slept 2 seconds.</msg>
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2024-09-26T17:36:00.636218" elapsed="2.000348"/>
-</kw>
-<status status="PASS" start="2024-09-26T17:36:00.566404" elapsed="2.070162"/>
-</kw>
-<status status="PASS" start="2024-09-26T17:36:00.563489" elapsed="2.074071"/>
-</test>
-<kw name="Closing Browser" owner="csp_keywords" type="TEARDOWN">
+<kw name="Suite Teardown Section" owner="csp_keywords" type="TEARDOWN">
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2024-09-26T17:36:02.640529" elapsed="2.411110"/>
+<status status="PASS" start="2024-09-28T12:36:26.474289" elapsed="2.387150"/>
 </kw>
-<status status="PASS" start="2024-09-26T17:36:02.639531" elapsed="2.412108"/>
+<doc>This keyword is executed after all test cases in the suite.
+It closes the browser.</doc>
+<status status="PASS" start="2024-09-28T12:36:26.474289" elapsed="2.387912"/>
 </kw>
-<status status="PASS" start="2024-09-26T17:35:39.671977" elapsed="25.379662"/>
+<status status="PASS" start="2024-09-28T12:36:21.026703" elapsed="7.835498"/>
 </suite>
 <statistics>
 <total>
-<stat pass="5" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">Regression</stat>
 </tag>
 <suite>
-<stat pass="5" fail="0" skip="0" id="s1" name="Csp Regression">Csp Regression</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Csp Regression">Csp Regression</stat>
 </suite>
 </statistics>
 <errors>
