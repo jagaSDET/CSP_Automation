@@ -1,79 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1 (Python 3.12.5 on win32)" generated="2024-09-28T12:36:21.023704" rpa="false" schemaversion="5">
-<suite id="s1" name="Csp Regression" source="C:\Users\Hp\OneDrive\Desktop\CSP_AUTOMATION\test_suite\csp_regression.robot">
-<kw name="Suite Setup Section" owner="csp_keywords" type="SETUP">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-09-28T12:36:21.471758" level="INFO">Opening browser 'chrome' to base url 'https://practice-automation.com/slider/'.</msg>
-<arg>${slider_url}</arg>
-<arg>${browser_type}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-09-28T12:36:21.471758" elapsed="4.030453"/>
+<robot generator="Robot 7.1 (Python 3.12.5 on win32)" generated="2024-10-05T19:17:35.148868" rpa="false" schemaversion="5">
+<suite id="s1" name="Csp Api Regression" source="C:\Users\Hp\OneDrive\Desktop\CSP_AUTOMATION\test_suite\csp_api_regression.robot">
+<test id="s1-t1" name="Get Cust Details" line="12">
+<kw name="Suite Setup Section" owner="csp_api_keywords" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-10-05T19:17:36.261098" level="INFO">Creating Session using : alias=Mysession, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Mysession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-10-05T19:17:36.261098" elapsed="0.000000"/>
 </kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2024-09-28T12:36:25.503205" elapsed="0.076806"/>
+<status status="PASS" start="2024-10-05T19:17:36.261098" elapsed="0.000000"/>
 </kw>
-<doc>This keyword is executed before any test cases in the suite.
-It opens the browser to the specified url and maximizes the window.</doc>
-<status status="PASS" start="2024-09-28T12:36:21.470762" elapsed="4.112871"/>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-10-05T19:17:38.272294" level="INFO">GET Request : url=http://127.0.0.1:5000/get 
+ path_url=/get 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-10-05T19:17:38.272294" level="INFO">GET Response : url=http://127.0.0.1:5000/get 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.0.4 Python/3.12.5', 'Date': 'Sat, 05 Oct 2024 13:47:38 GMT', 'Content-Type': 'application/json', 'Content-Length': '142', 'Connection': 'close'} 
+ body={
+  "CUST": "'RRR'",
+  "CUST - 3": "'RRR'",
+  "CUST-1": "KUMAR",
+  "CUST-2": "BALU",
+  "CUST-3": "GANESH",
+  "body": "{\"CUST-3\":\"RRR\"}"
+}
+ 
+ </msg>
+<msg time="2024-10-05T19:17:38.272294" level="INFO">${responce} = &lt;Response [200]&gt;</msg>
+<var>${responce}</var>
+<arg>Mysession</arg>
+<arg>/get</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-05T19:17:36.261098" elapsed="2.011196"/>
 </kw>
-<test id="s1-t1" name="Validate Slider After Default Value" line="20">
-<kw name="After Slider Default Value" owner="csp_keywords">
-<kw name="Get WebElement" owner="SeleniumLibrary">
-<msg time="2024-09-28T12:36:25.694690" level="INFO">${slider_xpath} = &lt;selenium.webdriver.remote.webelement.WebElement (session="6c726b3fd2ca7dc21eaa40c3869751e0", element="f.BBFC6FA0F0CE2490E8561A6D561C5FE6.d.A43769419CBDF63B46ADA152A98521F9.e.24")&gt;</msg>
-<var>${slider_xpath}</var>
-<arg>${slider_xpath}</arg>
-<doc>Returns the first WebElement matching the given ``locator``.</doc>
-<status status="PASS" start="2024-09-28T12:36:25.627950" elapsed="0.066740"/>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-10-05T19:17:38.272294" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${responce.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-10-05T19:17:38.272294" elapsed="0.000000"/>
 </kw>
-<kw name="Drag And Drop By Offset" owner="SeleniumLibrary">
-<arg>${slider_xpath}</arg>
-<arg>-350</arg>
-<arg>0</arg>
-<doc>Drags the element identified with ``locator`` by ``xoffset/yoffset``.</doc>
-<status status="PASS" start="2024-09-28T12:36:25.694690" elapsed="0.710221"/>
+<kw name="Dictionary Should Contain Value" owner="Collections">
+<arg>${responce.json()}</arg>
+<arg>KUMAR</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2024-10-05T19:17:38.272294" elapsed="0.000000"/>
 </kw>
-<kw name="Get WebElement" owner="SeleniumLibrary">
-<msg time="2024-09-28T12:36:26.436825" level="INFO">${slider_value_xpath} = &lt;selenium.webdriver.remote.webelement.WebElement (session="6c726b3fd2ca7dc21eaa40c3869751e0", element="f.BBFC6FA0F0CE2490E8561A6D561C5FE6.d.A43769419CBDF63B46ADA152A98521F9.e.31")&gt;</msg>
-<var>${slider_value_xpath}</var>
-<arg>${slider_value_xpath}</arg>
-<doc>Returns the first WebElement matching the given ``locator``.</doc>
-<status status="PASS" start="2024-09-28T12:36:26.405908" elapsed="0.030917"/>
-</kw>
-<kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2024-09-28T12:36:26.437823" level="INFO">Verifying element '&lt;selenium.webdriver.remote.webelement.WebElement (session="6c726b3fd2ca7dc21eaa40c3869751e0", element="f.BBFC6FA0F0CE2490E8561A6D561C5FE6.d.A43769419CBDF63B46ADA152A98521F9.e.31")&gt;' contains exact text '25'.</msg>
-<arg>${slider_value_xpath}</arg>
-<arg>${slider_default_value}</arg>
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2024-09-28T12:36:26.437823" elapsed="0.033475"/>
-</kw>
-<doc>After pefforming the slider action, validate the default value.</doc>
-<status status="PASS" start="2024-09-28T12:36:25.626872" elapsed="0.844426"/>
-</kw>
-<doc>Validating the slider after default value.</doc>
-<tag>Regression</tag>
-<status status="PASS" start="2024-09-28T12:36:25.584040" elapsed="0.888254"/>
+<status status="PASS" start="2024-10-05T19:17:36.261098" elapsed="2.011196"/>
 </test>
-<kw name="Suite Teardown Section" owner="csp_keywords" type="TEARDOWN">
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2024-09-28T12:36:26.474289" elapsed="2.387150"/>
+<test id="s1-t2" name="Add New Customer" line="18">
+<kw name="Suite Setup Section" owner="csp_api_keywords" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-10-05T19:17:38.272294" level="INFO">Creating Session using : alias=Mysession, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>Mysession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-10-05T19:17:38.272294" elapsed="0.000000"/>
 </kw>
-<doc>This keyword is executed after all test cases in the suite.
-It closes the browser.</doc>
-<status status="PASS" start="2024-09-28T12:36:26.474289" elapsed="2.387912"/>
+<status status="PASS" start="2024-10-05T19:17:38.272294" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2024-09-28T12:36:21.026703" elapsed="7.835498"/>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-05T19:17:38.272294" level="INFO">&amp;{data} = { CUST-3=GANESH }</msg>
+<var>&amp;{data}</var>
+<arg>CUST-3=GANESH</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-05T19:17:38.272294" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-10-05T19:17:38.272294" level="INFO">POST Request : url=http://127.0.0.1:5000/create 
+ path_url=/create 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '20', 'Content-Type': 'application/json'} 
+ body=b'{"CUST-3": "GANESH"}' 
+ </msg>
+<msg time="2024-10-05T19:17:38.272294" level="INFO">POST Response : url=http://127.0.0.1:5000/create 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.0.4 Python/3.12.5', 'Date': 'Sat, 05 Oct 2024 13:47:38 GMT', 'Content-Type': 'application/json', 'Content-Length': '142', 'Connection': 'close'} 
+ body={
+  "CUST": "'RRR'",
+  "CUST - 3": "'RRR'",
+  "CUST-1": "KUMAR",
+  "CUST-2": "BALU",
+  "CUST-3": "GANESH",
+  "body": "{\"CUST-3\":\"RRR\"}"
+}
+ 
+ </msg>
+<msg time="2024-10-05T19:17:38.272294" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>Mysession</arg>
+<arg>/create</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-05T19:17:38.272294" elapsed="0.000000"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2024-10-05T19:17:38.272294" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${resp.json()}</arg>
+<arg>CUST-3</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2024-10-05T19:17:38.287921" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resp.json()}</arg>
+<arg>WARN</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-05T19:17:38.287921" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Value" owner="Collections">
+<arg>${resp.json()}</arg>
+<arg>GANESH</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2024-10-05T19:17:38.287921" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-05T19:17:38.272294" elapsed="0.015627"/>
+</test>
+<status status="PASS" start="2024-10-05T19:17:35.148868" elapsed="3.139053"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">Regression</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Csp Regression">Csp Regression</stat>
+<stat pass="2" fail="0" skip="0" id="s1" name="Csp Api Regression">Csp Api Regression</stat>
 </suite>
 </statistics>
 <errors>
